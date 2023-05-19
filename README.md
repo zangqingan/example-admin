@@ -1,26 +1,5 @@
-# example-admin
+# 一、example-admin 概述
 
+1. 使用 npm init vue@latest 创建项目。
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+2. 往.eslintrc.cjs 文件中增加校验规则，运行 npm run lint 即可查看是否起作用。
