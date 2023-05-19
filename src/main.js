@@ -3,7 +3,7 @@ import ElementPlus from 'element-plus'
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 
 // 全局样式、全局字体相关
-import './assets/main.css'
+import './assets/styles/index.scss'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -20,7 +20,7 @@ app.use(router)
 app.use(ElementPlus, {
   locale: zhCn,
   // 支持 large、default、small
-  size: Cookies.get('size') || 'default'
+  size: 'default'
 })
 
 app.mount('#app')

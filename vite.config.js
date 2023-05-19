@@ -94,5 +94,14 @@ export default defineConfig({
         assetFileNames: 'static/[ext]/[name]-[hash].[ext]'
       }
     }
+  },
+  // 全局sass配置
+  css: {
+    preprocessorOptions: {
+      // 全局scss文件挂载
+      scss: {
+        additionalData: "@import './src/assets/styles/_variables.scss';"
+      }
+    }
   }
 })

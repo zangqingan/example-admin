@@ -8,4 +8,7 @@
    npm install -D unplugin-vue-components unplugin-auto-import
    在 vue.config.js 里配置。
    同时安装饿了么 ui，一并配置 npm install element-plus --save
-为了在vite配置文件中配置eslint需要安装一个包：npm i vite-plugin-eslint
+   为了在 vite 配置文件中配置 eslint 需要安装一个包：npm i vite-plugin-eslint
+
+4. 全局安装 sass，配置项目公共样式
+   npm i sass
