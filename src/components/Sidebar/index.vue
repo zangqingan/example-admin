@@ -56,7 +56,6 @@
 <script setup>
 import { ElMenu, ElMenuItem, ElSubMenu } from 'element-plus'
 import { useSidebarStore } from '@/stores/sidebar'
-import { User } from '@element-plus/icons-vue'
 const items = [
   {
     icon: 'User',
