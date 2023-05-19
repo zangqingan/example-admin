@@ -1,4 +1,6 @@
 <script setup>
+import { User, Lock } from '@element-plus/icons-vue'
+
 const loginForm = reactive({
   username: 'admin',
   password: '123456'
@@ -19,7 +21,7 @@ const rules = reactive({
 const loginRef = ref(null)
 const router = useRouter()
 const submitForm = () => {
-  login.value.validate(valid => {
+  loginRef.value.validate(valid => {
     if (valid) {
       ElMessage.success('登录成功')
       localStorage.setItem('local_username', loginForm.username)
@@ -47,7 +49,7 @@ const submitForm = () => {
             v-model="loginForm.username"
             placeholder="username">
             <template #prepend>
-              <el-button icon="el-icon-user"></el-button>
+              <el-icon><User /></el-icon>
             </template>
           </el-input>
         </el-form-item>
@@ -58,7 +60,7 @@ const submitForm = () => {
             v-model="loginForm.password"
             @keyup.enter="submitForm()">
             <template #prepend>
-              <el-button icon="el-icon-lock"></el-button>
+              <el-icon><Lock /></el-icon>
             </template>
           </el-input>
         </el-form-item>

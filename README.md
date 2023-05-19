@@ -13,6 +13,10 @@
 4. 全局安装 sass，配置项目公共样式
    npm i sass
 
+5. 安装饿了么常用图标 icon 库，并配置自动导入。
+   npm install @element-plus/icons-vue
+   npm install unplugin-icons
+
 # 二、登录页编写
 
 增加登录静态路由，编写登录组件。
