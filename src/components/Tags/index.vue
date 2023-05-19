@@ -22,9 +22,7 @@
     </ul>
     <div class="tags-close-box">
       <el-dropdown @command="handleTags">
-        <el-button
-          size="mini"
-          type="primary">
+        <el-button type="primary">
           标签选项
           <i class="el-icon-arrow-down el-icon--right"></i>
         </el-button>
@@ -140,6 +138,8 @@ const closeOther = () => {
 
 .tags-li.active {
   color: #fff;
+  border: 1px solid #409eff;
+  background-color: #409eff;
 }
 
 .tags-li-title {

@@ -30,7 +30,7 @@
         </div>
         <!-- 用户头像 -->
         <div class="user-avator">
-          <img src="../assets/img/img.jpg" />
+          <img src="@/assets/images/img.jpg" />
         </div>
         <!-- 用户名下拉菜单 -->
         <el-dropdown
@@ -65,6 +65,7 @@
 <script setup>
 import { useSidebarStore } from '@/stores/sidebar'
 
+const message = 2
 // 侧边栏折叠
 const sidebar = useSidebarStore()
 const collapseChage = () => {
@@ -99,12 +100,16 @@ const handleCommand = command => {
   height: 70px;
   font-size: 22px;
   color: #fff;
+  background-color: #242f42;
 }
 .collapse-btn {
   float: left;
   padding: 0 21px;
   cursor: pointer;
   line-height: 70px;
+}
+.collapse-btn:hover {
+  background: rgb(40, 52, 70);
 }
 .header .logo {
   float: left;

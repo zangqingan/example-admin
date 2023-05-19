@@ -1,39 +1,3 @@
-<script setup>
-import { User, Lock } from '@element-plus/icons-vue'
-
-const loginForm = reactive({
-  username: 'admin',
-  password: '123456'
-})
-
-const rules = reactive({
-  username: [
-    {
-      required: true,
-      message: '请输入用户名',
-      trigger: 'blur'
-    }
-  ],
-  password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
-})
-
-// 提交登录表单
-const loginRef = ref(null)
-const router = useRouter()
-const submitForm = () => {
-  loginRef.value.validate(valid => {
-    if (valid) {
-      ElMessage.success('登录成功')
-      localStorage.setItem('local_username', loginForm.username)
-      router.push('/')
-    } else {
-      ElMessage.error('登录失败')
-      return false
-    }
-  })
-}
-</script>
-
 <template>
   <div class="login-wrap">
     <div class="ms-login">
@@ -76,6 +40,42 @@ const submitForm = () => {
     </div>
   </div>
 </template>
+\
+<script setup>
+import { User, Lock } from '@element-plus/icons-vue'
+
+const loginForm = reactive({
+  username: 'admin',
+  password: '123456'
+})
+
+const rules = reactive({
+  username: [
+    {
+      required: true,
+      message: '请输入用户名',
+      trigger: 'blur'
+    }
+  ],
+  password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
+})
+
+// 提交登录表单
+const loginRef = ref(null)
+const router = useRouter()
+const submitForm = () => {
+  loginRef.value.validate(valid => {
+    if (valid) {
+      ElMessage.success('登录成功')
+      localStorage.setItem('local_username', loginForm.username)
+      router.push('/')
+    } else {
+      ElMessage.error('登录失败')
+      return false
+    }
+  })
+}
+</script>
 
 <style scoped>
 .login-wrap {
@@ -84,6 +84,7 @@ const submitForm = () => {
   height: 100%;
   background-image: url(@/assets/images/bg.jpg);
   background-size: 100%;
+  background: #324157;
 }
 .ms-title {
   width: 100%;

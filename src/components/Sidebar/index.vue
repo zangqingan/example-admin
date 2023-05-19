@@ -11,7 +11,7 @@
       router>
       <template v-for="item in items">
         <template v-if="item.subs">
-          <ElSubMenu
+          <el-sub-menu
             :index="item.index"
             :key="item.index">
             <template #title>
@@ -19,7 +19,7 @@
               <span>{{ item.title }}</span>
             </template>
             <template v-for="subItem in item.subs">
-              <ElSubMenu
+              <el-sub-menu
                 v-if="subItem.subs"
                 :index="subItem.index"
                 :key="subItem.index">
@@ -30,7 +30,7 @@
                   :index="threeItem.index">
                   {{ threeItem.title }}</el-menu-item
                 >
-              </ElSubMenu>
+              </el-sub-menu>
               <el-menu-item
                 v-else
                 :index="subItem.index"
@@ -38,7 +38,7 @@
                 >{{ subItem.title }}
               </el-menu-item>
             </template>
-          </ElSubMenu>
+          </el-sub-menu>
         </template>
         <template v-else>
           <el-menu-item
@@ -56,10 +56,10 @@
 <script setup>
 import { ElMenu, ElMenuItem, ElSubMenu } from 'element-plus'
 import { useSidebarStore } from '@/stores/sidebar'
-
+import { User } from '@element-plus/icons-vue'
 const items = [
   {
-    icon: 'el-icon-lx-home',
+    icon: 'User',
     index: '/dashboard',
     title: '系统首页'
   },

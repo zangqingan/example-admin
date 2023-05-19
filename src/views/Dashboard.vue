@@ -8,7 +8,7 @@
           style="height: 252px">
           <div class="user-info">
             <img
-              src="../assets/img/img.jpg"
+              src="@/assets/images/img.jpg"
               class="user-avator"
               alt />
             <div class="user-info-cont">
@@ -99,7 +99,7 @@
               <span>待办事项</span>
               <el-button
                 style="float: right; padding: 3px 0"
-                type="text"
+                link
                 >添加</el-button
               >
             </div>
