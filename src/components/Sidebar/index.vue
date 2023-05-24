@@ -15,7 +15,7 @@
             :index="item.index"
             :key="item.index">
             <template #title>
-              <i :class="item.icon"></i>
+              <el-icon color="#fff"> <component :is="item.icon" /> </el-icon>
               <span>{{ item.title }}</span>
             </template>
             <template v-for="subItem in item.subs">
@@ -44,7 +44,7 @@
           <el-menu-item
             :index="item.index"
             :key="item.index">
-            <i :class="item.icon"></i>
+            <el-icon color="#fff"> <component :is="item.icon" /> </el-icon>
             <template #title>{{ item.title }}</template>
           </el-menu-item>
         </template>
@@ -54,26 +54,33 @@
 </template>
 
 <script setup>
-import { ElMenu, ElMenuItem, ElSubMenu } from 'element-plus'
+import {
+  Document,
+  Menu as IconMenu,
+  Location,
+  Setting,
+  House
+} from '@element-plus/icons-vue'
 import { useSidebarStore } from '@/stores/sidebar'
+
 const items = [
   {
-    icon: 'User',
+    icon: House,
     index: '/dashboard',
     title: '系统首页'
   },
   {
-    icon: 'el-icon-lx-cascades',
+    icon: IconMenu,
     index: '/table',
     title: '基础表格'
   },
   {
-    icon: 'el-icon-lx-copy',
+    icon: Document,
     index: '/tabs',
     title: 'tab选项卡'
   },
   {
-    icon: 'el-icon-lx-calendar',
+    icon: Location,
     index: '3',
     title: '表单相关',
     subs: [
@@ -102,22 +109,22 @@ const items = [
     ]
   },
   {
-    icon: 'el-icon-lx-emoji',
+    icon: Location,
     index: '/icon',
     title: '自定义图标'
   },
   {
-    icon: 'el-icon-pie-chart',
+    icon: Setting,
     index: '/charts',
     title: 'schart图表'
   },
   {
-    icon: 'el-icon-lx-global',
+    icon: Setting,
     index: '/i18n',
     title: '国际化功能'
   },
   {
-    icon: 'el-icon-lx-warn',
+    icon: Setting,
     index: '7',
     title: '错误处理',
     subs: [
@@ -132,36 +139,28 @@ const items = [
     ]
   },
   {
-    icon: 'el-icon-lx-redpacket_fill',
+    icon: Setting,
     index: '/donate',
     title: '支持作者'
   }
 ]
 
+// 默认激活
 const route = useRoute()
 const onRoutes = computed(() => {
   return route.path
 })
 
+// 侧边栏显示隐藏
 const sidebar = useSidebarStore()
 </script>
 
 <style lang="scss" scoped>
-.sidebar {
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 70px;
-  bottom: 0;
-  overflow-y: scroll;
-}
-.sidebar::-webkit-scrollbar {
-  width: 0;
-}
 .sidebar-el-menu:not(.el-menu--collapse) {
   width: 250px;
 }
-.sidebar > ul {
+.sidebar,
+ul {
   height: 100%;
 }
 </style>

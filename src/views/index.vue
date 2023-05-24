@@ -1,25 +1,28 @@
 <template>
-  <!-- 系统首页入库 -->
-  <div>
+  <!-- 系统首页 -->
+  <div class="h-100">
     <!-- header -->
     <Header />
-    <!-- sidebar -->
-    <Sidebar />
     <!-- content -->
-    <div
-      class="content-box"
-      :class="{ 'content-collapse': sidebar.collapse }">
-      <Tags />
-      <div class="content">
-        <router-view v-slot="{ Component }">
-          <transition
-            name="move"
-            mode="out-in">
-            <keep-alive :include="tags.nameList">
-              <component :is="Component" />
-            </keep-alive>
-          </transition>
-        </router-view>
+    <div class="d-flex content">
+      <!-- sidebar -->
+      <Sidebar />
+      <!-- content-right -->
+      <div
+        class="content-box"
+        :class="{ 'content-collapse': sidebar.collapse }">
+        <Tags />
+        <div class="content">
+          <router-view v-slot="{ Component }">
+            <transition
+              name="move"
+              mode="out-in">
+              <keep-alive :include="tags.nameList">
+                <component :is="Component" />
+              </keep-alive>
+            </transition>
+          </router-view>
+        </div>
       </div>
     </div>
   </div>
@@ -37,6 +40,10 @@ const tags = useTagsStore()
 </script>
 
 <style lang="scss" scoped>
+.content {
+  width: 100%;
+  height: 100%;
+}
 .content-box {
   position: absolute;
   left: 250px;
@@ -48,14 +55,6 @@ const tags = useTagsStore()
   transition: left 0.3s ease-in-out;
   background: #f0f0f0;
 }
-.content {
-  width: auto;
-  height: 100%;
-  padding: 10px;
-  overflow-y: scroll;
-  box-sizing: border-box;
-}
-
 .content-collapse {
   left: 65px;
 }

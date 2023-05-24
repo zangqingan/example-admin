@@ -79,12 +79,10 @@ const submitForm = () => {
 
 <style scoped>
 .login-wrap {
-  position: relative;
   width: 100%;
   height: 100%;
   background-image: url(@/assets/images/bg.jpg);
   background-size: 100%;
-  background: #324157;
 }
 .ms-title {
   width: 100%;
