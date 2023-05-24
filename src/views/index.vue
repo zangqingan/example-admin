@@ -4,15 +4,14 @@
     <!-- header -->
     <Header />
     <!-- content -->
-    <div class="d-flex content">
+    <div class="d-flex w-100 h-100">
       <!-- sidebar -->
       <Sidebar />
       <!-- content-right -->
-      <div
-        class="content-box"
-        :class="{ 'content-collapse': sidebar.collapse }">
+      <div class="content-box w-100 h-100">
+        <!-- 面包屑 -->
         <Tags />
-        <div class="content">
+        <div class="app-container">
           <router-view v-slot="{ Component }">
             <transition
               name="move"
@@ -32,30 +31,20 @@
 import Header from '@/components/Header/index.vue'
 import Sidebar from '@/components/Sidebar/index.vue'
 import Tags from '@/components/Tags/index.vue'
-import { useSidebarStore } from '@/stores/sidebar'
 import { useTagsStore } from '@/stores/tags'
 
-const sidebar = useSidebarStore()
 const tags = useTagsStore()
 </script>
 
 <style lang="scss" scoped>
-.content {
-  width: 100%;
-  height: 100%;
-}
 .content-box {
-  position: absolute;
-  left: 250px;
-  right: 0;
-  top: 70px;
-  bottom: 0;
-  padding-bottom: 30px;
   -webkit-transition: left 0.3s ease-in-out;
   transition: left 0.3s ease-in-out;
   background: #f0f0f0;
 }
-.content-collapse {
-  left: 65px;
+.app-container {
+  height: 100%;
+  padding: 16px 20px;
+  box-sizing: border-box;
 }
 </style>

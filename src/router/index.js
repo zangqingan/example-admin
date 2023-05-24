@@ -18,7 +18,15 @@ const router = createRouter({
           meta: {
             title: '系统首页'
           },
-          component: () => import('@/views/Dashboard.vue')
+          component: () => import('@/views/Dashboard/Dashboard.vue')
+        },
+        {
+          path: '/table',
+          name: 'basetable',
+          meta: {
+            title: '表格'
+          },
+          component: () => import('@/views/BaseTable/BaseTable.vue')
         }
       ]
     },

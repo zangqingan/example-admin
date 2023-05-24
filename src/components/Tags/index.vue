@@ -1,33 +1,31 @@
 <template>
   <div
-    class="tags"
+    class="d-flex jc-between ai-center tags-content"
     v-if="tags.show">
-    <ul>
-      <li
-        class="tags-li"
+    <div class="d-flex jc-between ai-center">
+      <div
         v-for="(item, index) in tags.list"
+        class="item-content"
         :class="{ active: isActive(item.path) }"
         :key="index">
-        <router-link
-          :to="item.path"
-          class="tags-li-title"
-          >{{ item.title }}</router-link
-        >
-        <span
-          class="tags-li-icon"
-          @click="closeTags(index)">
-          <i class="el-icon-close"></i>
-        </span>
-      </li>
-    </ul>
-    <div class="tags-close-box">
+        <div class="d-flex ai-center">
+          <router-link :to="item.path">{{ item.title }}</router-link>
+          <el-icon
+            class="item-icon"
+            @click="closeTags(index)"
+            ><Close
+          /></el-icon>
+        </div>
+      </div>
+    </div>
+    <div class="close-box">
       <el-dropdown @command="handleTags">
         <el-button type="primary">
           标签选项
-          <i class="el-icon-arrow-down el-icon--right"></i>
+          <el-icon><ArrowDown /></el-icon>
         </el-button>
         <template #dropdown>
-          <el-dropdown-menu size="small">
+          <el-dropdown-menu>
             <el-dropdown-item command="other">关闭其他</el-dropdown-item>
             <el-dropdown-item command="all">关闭所有</el-dropdown-item>
           </el-dropdown-menu>
@@ -38,18 +36,18 @@
 </template>
 
 <script setup>
+import { Close, ArrowDown } from '@element-plus/icons-vue'
 import { useTagsStore } from '@/stores/tags'
 
 // 当前激活tag
+const route = useRoute()
 const isActive = path => {
   return path === route.fullPath
 }
 
-const route = useRoute()
+// 点击tag标签时关闭单个标签
 const router = useRouter()
-
 const tags = useTagsStore()
-// 关闭单个标签
 const closeTags = index => {
   const delItem = tags.list[index]
   tags.delTagsItem(index)
@@ -76,6 +74,8 @@ const setTags = route => {
   }
 }
 setTags(route)
+
+// 路由更新前设置标签
 onBeforeRouteUpdate(to => {
   setTags(to)
 })
@@ -98,75 +98,39 @@ const closeOther = () => {
 </script>
 
 <style lang="scss" scoped>
-.tags {
-  position: relative;
-  height: 30px;
-  overflow: hidden;
+.tags-content {
+  height: 60px;
   background: #fff;
-  padding-right: 120px;
   box-shadow: 0 5px 10px #ddd;
+  margin-bottom: 20px;
 }
-
-.tags ul {
-  box-sizing: border-box;
-  width: 100%;
+.item-content {
   height: 100%;
+  line-height: 60px;
+  border-right: 1px solid #d8dce5;
+  padding: 0 8px;
+  font-size: 15px;
+  font-weight: 500;
 }
-
-.tags-li {
-  float: left;
-  margin: 3px 5px 2px 3px;
-  border-radius: 3px;
-  font-size: 12px;
-  overflow: hidden;
-  cursor: pointer;
-  height: 23px;
-  line-height: 23px;
-  border: 1px solid #e9eaec;
-  background: #fff;
-  padding: 0 5px 0 12px;
-  vertical-align: middle;
-  color: #666;
-  -webkit-transition: all 0.3s ease-in;
-  -moz-transition: all 0.3s ease-in;
-  transition: all 0.3s ease-in;
+.active {
+  color: #1750a1;
+  border: 1px solid #dde6f8;
+  background-color: #dde6f8;
 }
-
-.tags-li:not(.active):hover {
-  background: #f8f8f8;
+.item-icon {
+  margin: 0 3px;
 }
-
-.tags-li.active {
-  color: #fff;
-  border: 1px solid #409eff;
-  background-color: #409eff;
-}
-
-.tags-li-title {
-  float: left;
-  max-width: 80px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  margin-right: 5px;
-  color: #666;
-}
-
-.tags-li.active .tags-li-title {
-  color: #fff;
-}
-
-.tags-close-box {
-  position: absolute;
-  right: 0;
-  top: 0;
-  box-sizing: border-box;
+.close-box {
   padding-top: 1px;
   text-align: center;
   width: 110px;
-  height: 30px;
+  height: 100%;
   background: #fff;
   box-shadow: -3px 0 15px 3px rgba(0, 0, 0, 0.1);
   z-index: 10;
+}
+.el-dropdown,
+.el-button {
+  height: 100%;
 }
 </style>
