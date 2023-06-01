@@ -20,3 +20,8 @@
 # 二、登录页编写
 
 增加登录静态路由，编写登录组件。
+
+# 三、axios 接口封装
+
+在 src 目录下新建 api 和 utils 文件夹，其中 api 下存放具体的接口。
+utils 目录下新建 request.js 文件对 axios 进行封装。
